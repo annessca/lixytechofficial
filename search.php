@@ -14,14 +14,24 @@ get_header();
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'lixytechofficial' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
+			<!--? Hero Start -->
+			<div class="slider-area2">
+				<div class="slider-height2 d-flex align-items-center">
+					<div class="container">
+						<div class="row">
+							<div class="col-xl-12">
+								<div class="hero-cap hero-cap2 pt-70">
+									<?php
+									/* translators: %s: search query. */
+									printf( esc_html__( '%s', 'lixytechofficial' ), '<span id="search-result">Search ResultS for: </span><h2>' . get_search_query() . '</h2>' ); 
+									?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Hero End -->
 
 			<?php
 			/* Start the Loop */
@@ -37,8 +47,6 @@ get_header();
 
 			endwhile;
 
-			the_posts_navigation();
-
 		else :
 
 			get_template_part( 'template-parts/content', 'none' );
@@ -49,5 +57,4 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

@@ -115,7 +115,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-					<img src="<?php echo get_template_directory_uri() ?> /assets/img/logo/lixylogo.png" alt="Website logo">
+					<img src="<?php echo get_template_directory_uri() ?>/assets/img/logo/loading.gif" alt="Website logo">
                 </div>
             </div>
         </div>
@@ -129,7 +129,9 @@
 						<div class="menu-wrapper d-flex align-items-center justify-content-between">
 							<div class="logo">
 								<?php
-								the_custom_logo();?>
+								the_custom_logo();
+								?>
+								<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 							</div>
 							<div class="main-menu f-right d-none d-lg-block">
 								<nav>
@@ -147,7 +149,7 @@
 							</div>
 							<!-- Header-btn -->
 							<div class="header-btns d-none d-lg-block f-right">
-                           		<a href="#" class="btn">Partner With Lixy</a>
+                           		<a href="<?php echo get_option('partnerwithlixy'); ?>" class="btn">Partner With Lixy</a>
                        		</div>
 							<!-- Mobile Menu -->
 							<div class="col-12">

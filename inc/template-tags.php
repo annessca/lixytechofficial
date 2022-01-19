@@ -157,7 +157,8 @@ if ( ! function_exists( 'lixytechofficial_searchbar' ) ) :
 		<div class="form-group">
 		<input type="search" value="' . get_search_query() . '" name="s" id="s" class="form-control"/>
 		</div>
-		<button type="submit" id=”searchsubmit" class="button rounded-0 primary-bg text-white w-100 btn_1 btn">Search</button>
+		<input type="hidden" value="any" name="post_type" id="post_type" />
+		<button type="submit" id="searchsubmit" class="button rounded-0 primary-bg text-white w-100 btn_1 btn">Search</button>
 		</form>';
 		
 		echo $form;

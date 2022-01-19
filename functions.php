@@ -151,7 +151,7 @@ function custom_links_page() {
 		<h1>Custom Links</h1>
 		<form method="post" action="options.php">
 			<?php 
-				settings_fields( 'action' );
+				settings_fields( 'section' );
 				do_settings_sections( 'theme-options' );
 				submit_button();
 			?>
@@ -161,42 +161,51 @@ function custom_links_page() {
 }
 
 // Twitter
-
 function twitter_link() {
 	?>
-	<input type="text" name="twitter" id="twitter" value="<php echo get_option( 'twitter' ); ?>" />
+	<input type="text" name="twitter" id="twitter" value="<?php echo get_option( 'twitter' ); ?>" />
 	<?php 
 }
 
+// Facebook
 function facebook_link() {
 	?>
-	<input type="text" name="facebook" id="facebook" value="<php echo get_option( 'facebook' ); ?>" />
+	<input type="text" name="facebook" id="facebook" value="<?php echo get_option( 'facebook' ); ?>" />
 	<?php 
 }
 
+// Linkedin
 function linkedin_link() {
 	?>
-	<input type="text" name="linkedin" id="linkedin" value="<php echo get_option( 'linkedin' ); ?>" />
+	<input type="text" name="linkedin" id="linkedin" value="<?php echo get_option( 'linkedin' ); ?>" />
 	<?php 
 }
-
+// Partner With Us
 function partner_with_lixy_link() {
 	?>
-	<input type="text" name="partnerwithlixy" id="partnerwithlixy" value="<php echo get_option( 'partnerwithlixy' ); ?>" />
+	<input type="text" name="partnerwithlixy" id="partnerwithlixy" value="<?php echo get_option( 'partnerwithlixy' ); ?>" />
+	<?php
+}
+// More About Lixy
+function more_about_lixy_link() {
+	?>
+	<input type="text" name="moreaboutlixy" id="moreaboutlixy" value="<?php echo get_option( 'moreaboutlixy' ); ?>" />
 	<?php
 }
 
 function custom_links_page_setup() {
 	add_settings_section( 'section', 'All Settings', null, 'theme-options' );
-	add_settings_field( 'twitter', 'Twitter URL', 'twitter_link', 'theme-option', 'section' );
-	add_settings_field( 'facebook', 'Facebook URL', 'facebook_link', 'theme-option', 'section' );
-	add_settings_field( 'linkedin', 'LinkedIn URL', 'linkedin_link', 'theme-option', 'section' );
-	add_settings_field( 'partnerwithlixy', 'Partner With Lixy URL', 'partner_with_lixy_link', 'theme-option', 'section' );
+	add_settings_field( 'twitter', 'Twitter URL', 'twitter_link', 'theme-options', 'section' );
+	add_settings_field( 'facebook', 'Facebook URL', 'facebook_link', 'theme-options', 'section' );
+	add_settings_field( 'linkedin', 'LinkedIn URL', 'linkedin_link', 'theme-options', 'section' );
+	add_settings_field( 'partnerwithlixy', 'Partner With Lixy URL', 'partner_with_lixy_link', 'theme-options', 'section' );
+	add_settings_field( 'moreaboutlixy', 'More About Lixy URL', 'more_about_lixy_link', 'theme-options', 'section' );
 
 	register_setting('section', 'twitter');
 	register_setting('section', 'facebook');
 	register_setting('section', 'linkedin');
 	register_setting('section', 'partnerwithlixy');
+	register_setting('section', 'moreaboutlixy');
 }
 
 add_action( 'admin_init', 'custom_links_page_setup');
@@ -212,6 +221,7 @@ function lixytechofficial_scripts() {
 	wp_enqueue_style( 'lixytechofficial-slick', get_template_directory_uri() . '/css/slick.css' );
 	
 	wp_enqueue_script( 'lixytechofficial-navigation', get_template_directory_uri() . '/js/navigation.js', array(), true );
+	wp_enqueue_script( 'lixytechofficial-hide-elements', get_template_directory_uri() . '/js/hide-elements.js', array(), true );
 	wp_enqueue_script( 'lixytechofficial-animated.headline', get_template_directory_uri() . '/js/animated.headline.js', array(), true );
 	wp_enqueue_script( 'lixytechofficial-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '4.4.1', true );
 	wp_enqueue_script( 'lixytechofficial-wow', get_template_directory_uri() . '/js/wow.min.js', array(), true );
@@ -285,6 +295,78 @@ function lixytechofficial_testimonials() {
     ));
 }
 add_action( 'init', 'lixytechofficial_testimonials', 0 );
+
+/**
+ * Register a custom post type.
+ *
+ * This function makes it possible to create custom posts for case studies post entries.
+ *
+ * @link https://developer.wordpress.org/reference/functions/register_post_type/
+ */
+function lixytechofficial_casestudies() {
+    register_post_type( 'lixy-projects', array(
+        'labels'    => array(
+            'name'  => __( 'Case Studies' ),
+			'singular_name' => __( 'Case Studies' )
+        ),
+        'public'			=> true,
+        'hierarchical'		=> true,
+        'has_archive'		=> true,
+		'menu_icon'			=> 'dashicons-performance',
+		'show_in_rest'		=> true,
+        'supports'			=> array(
+            'title',
+			'editor',
+			'excerpt',
+            'thumbnail',
+        )
+    ));
+}
+add_action( 'init', 'lixytechofficial_casestudies', 0 );
+
+// PAGINATION
+function lixytechofficial_custom_pagination($numpages = '', $pagerange = '', $paged='') {
+    if (empty($pagerange)) {
+        $pagerange = 0;
+    }
+    global $paged;
+    if (empty($paged)) {
+        $paged = 1;
+    }
+    if ($numpages == '') {
+        global $wp_query;
+        $numpages = $wp_query->max_num_pages;
+        if(!$numpages) {
+            $numpages = 1;
+        }
+    }
+    /** 
+     * We construct the pagination arguments to enter into our paginate_links
+     * function. 
+     */
+    $pagination_args = array(
+        'base'            => get_pagenum_link(1) . '%_%',
+        'format'          => 'page/%#%',
+        'total'           => $numpages,
+        'current'         => $paged,
+        'show_all'        => False,
+        'end_size'        => 14,
+        'mid_size'        => $pagerange,
+        'prev_next'       => True,
+        'prev_text'       => "Previous",
+        'next_text'       => "Next",
+        'type'            => 'plain',
+        'add_args'        => false,
+        'add_fragment'    => ''
+    );
+    $paginate_links = paginate_links($pagination_args);
+    if ($paginate_links) {
+        echo "<div class='custom-pagination'>";
+            echo $paginate_links;
+        echo "</div>";
+    }
+}
+add_action( 'wp_loaded', 'lixytechofficial_custom_pagination' );
 
 /**
  * Implement the Custom Header feature.

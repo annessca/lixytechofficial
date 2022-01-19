@@ -94,34 +94,34 @@ get_header();
         	<div class="container">
             	<div class="brand-active brand-border pb-40 pt-40">
 					<div class="single-brand">
-						<img src="<?php echo get_template_directory_uri() ?> /assets/img/gallery/logobrand1.png" alt="Brightlight logo">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/gallery/logobrand1.png" alt="Brightlight logo">
 					</div>
 					<div class="single-brand">
-						<img src="<?php echo get_template_directory_uri() ?> /assets/img/gallery/logobrand2.png" alt="CodeWalker logo">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/gallery/logobrand2.png" alt="CodeWalker logo">
 					</div>
 					<div class="single-brand">
-						<img src="<?php echo get_template_directory_uri() ?> /assets/img/gallery/logobrand3.png" alt="Outmatch logo">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/gallery/logobrand3.png" alt="Outmatch logo">
 					</div>
 					<div class="single-brand">
-						<img src="<?php echo get_template_directory_uri() ?> /assets/img/gallery/logobrand4.png" alt="Wellnite logo">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/gallery/logobrand4.png" alt="Wellnite logo">
 					</div>
 					<div class="single-brand">
-						<img src="<?php echo get_template_directory_uri() ?> /assets/img/gallery/bindrsmall.png" alt="Bindr logo">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/gallery/bindrsmall.png" alt="Bindr logo">
 					</div>
 					<div class="single-brand">
-						<img src="<?php echo get_template_directory_uri() ?> /assets/img/gallery/logobrand1.png" alt="Brightlight logo">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/gallery/logobrand1.png" alt="Brightlight logo">
 					</div>
 					<div class="single-brand">
-						<img src="<?php echo get_template_directory_uri() ?> /assets/img/gallery/logobrand2.png" alt="CodeWalker logo">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/gallery/logobrand2.png" alt="CodeWalker logo">
 					</div>
 					<div class="single-brand">
-						<img src="<?php echo get_template_directory_uri() ?> /assets/img/gallery/logobrand3.png" alt="Outmatch logo">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/gallery/logobrand3.png" alt="Outmatch logo">
 					</div>
 					<div class="single-brand">
-						<img src="<?php echo get_template_directory_uri() ?> /assets/img/gallery/logobrand4.png" alt="Wellnite logo">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/gallery/logobrand4.png" alt="Wellnite logo">
 					</div>
 					<div class="single-brand">
-						<img src="<?php echo get_template_directory_uri() ?> /assets/img/gallery/bindrsmall.png" alt="Bindr logo">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/gallery/bindrsmall.png" alt="Bindr logo">
 					</div>
             	</div>
         	</div>

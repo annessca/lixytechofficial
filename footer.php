@@ -22,13 +22,13 @@
 								<!-- logo -->
 								<div class="footer-logo wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
 									<?php the_custom_logo();?>
+									<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 								</div>
 								<!-- Menu -->
-								<!-- Header Start -->
 								<div class="header-area main-header2 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".4s">
 									<div class="main-header main-header2">
 										<div class="menu-wrapper menu-wrapper2">
-											<!-- Main-menu -->
+											<!-- Footer-sub-menu -->
 											<div class="main-menu main-menu2 text-center">
 												<nav>
 													<?php
@@ -45,12 +45,11 @@
 										</div>
 									</div>
 								</div>
-								<!-- Header End -->
 								<!-- social -->
 								<div class="footer-social mt-30 wow fadeInUp" data-wow-duration="3s" data-wow-delay=".8s">
-									<a href="#"><i class="fab fa-twitter"></i></a>
-									<a href="#"><i class="fab fa-facebook-f"></i></a>
-									<a href="#"><i class="fab fa-linkedin"></i></a>
+									<a href="<?php echo get_option('twitter'); ?>"><i class="fab fa-twitter"></i></a>
+									<a href="<?php echo get_option('facebook'); ?>"><i class="fab fa-facebook-f"></i></a>
+									<a href="<?php echo get_option('linkedin'); ?>"><i class="fab fa-linkedin"></i></a>
 								</div>
 							</div>
 						</div>

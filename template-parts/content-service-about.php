@@ -66,7 +66,7 @@
         <div class="row align-items-center">
             <div class="col-xl-6 col-lg-6">
                 <div class="support-location-img">
-                    <img src="<?php echo get_template_directory_uri() ?> /assets/img/gallery/about.png" alt="Work with us">
+                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/gallery/about.png" alt="Work with us">
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6">
@@ -79,7 +79,7 @@
                     <div class="support-caption">
                         <p class="pera-top">Competitive advantage comes with finding and exploiting untapped markets. LIXY identifies, trains, and manages quality engineers from from Africa, allowing you to benefit from the reduced costs in finding the right and quality engineers.</p>
                         <p class="mb-65">We hire experienced engineers on your behalf, at a fraction of what you would pay a beginner in the local market. We also train and ensure a sustained performance for your team, so you can focus on product development.</p>
-                        <a href="#" class="btn post-btn">More About Us</a>
+                        <a href="<?php echo get_option('moreaboutlixy'); ?>" class="btn post-btn">More About Us</a>
                     </div>
                 </div>
             </div>
@@ -98,6 +98,9 @@
                 <?php
                     $args =  array(
                         'post_type' => 'testimonials', 
+                        'orderby' => 'date',
+                        'order' => 'DESC',
+                        'posts_per_page' => 16
                     );
                     $custom_query = new WP_Query( $args );
                     while ($custom_query->have_posts()) : $custom_query->the_post();
@@ -121,3 +124,4 @@
 		</div>
 	</div>
 </section>
+
